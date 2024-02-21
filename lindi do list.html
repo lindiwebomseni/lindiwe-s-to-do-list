@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My To-Do List</title>
+  <style>
+    body {
+      background-image: url('../Documents/The-Importance-of-a-To-Do-List-social-media-.jpg');
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+        font-size: 100px;
+      background-color: #3498db;
+      color: #fdf5f5;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    div {
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 8px;;
+    }
+
+    button {
+      padding:0;
+      background-color: #2ecc71;
+      color: #fff;
+      
+    }
+
+    button:hover {
+      background-color: #27ae60;
+    }
+
+    ul {
+      list-style-type: square;
+      padding: 0;
+    }
+
+    li {
+      background-color: #ecf0f1;
+      margin: 5px 0;
+      padding: 0px;
+      border-radius: 5px;
+      display: flex;
+      justify-content:center;
+      align-items: center;
+    }
+
+    li button {
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    li button:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <h1>My To-Do List</h1>
+  
+  <div>
+    <input type="text" id="taskInput" placeholder="Add a new task">
+    <button onclick="addTask()">Add Task</button>
+  </div>
+  
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+      var taskInput = document.getElementById("taskInput");
+      var taskList = document.getElementById("taskList");
+
+      if (taskInput.value.trim() === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      var li = document.createElement("li");
+      li.textContent = taskInput.value;
+
+      // Add a remove button to each task
+      var removeButton = document.createElement("button");
+      removeButton.textContent = "Remove";
+      removeButton.onclick = function() {
+        taskList.removeChild(li);
+      };
+
+      li.appendChild(removeButton);
+      taskList.appendChild(li);
+
+      taskInput.value = "";
+    }
+  </script>
+</body>
+</html>
